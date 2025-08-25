@@ -118,7 +118,7 @@ export default function InternationalClients() {
                 asChild
                 className="w-auto bg-[#D8E0F0] hover:bg-[#D8E0F0] text-black border border-black px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-sm sm:text-base lg:text-lg font-semibold rounded-full transition-all duration-300 hover:shadow-lg"
               >
-                <a href="/industries">Explore</a>
+                <a href="https://scalixity.com/industries">Explore</a>
               </Button>
             </motion.div>
           </div>
