@@ -190,7 +190,7 @@ export default function ClientTestimonials() {
             <div className="relative overflow-x-hidden">
               <div 
                 ref={scrollContainerRef}
-                className="overflow-x-auto scrollbar-hide"
+                className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 onScroll={handleScroll}
               >
                 <div className="flex gap-8 xl:gap-10 pb-4 pt-8" style={{ minWidth: 'max-content' }}>
