@@ -39,10 +39,10 @@ export function Industries() {
   };
 
   return (
-    <div className="bg-[#F2E5DC] py-20">
+    <div className="bg-[#F2E5DC] py-10">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold  sm:mb-6 text-black mb-24 text-center  " style={{ fontFamily: 'Playfair Display, serif' }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold  sm:mb-6 text-black mb-2 text-center  " style={{ fontFamily: 'Playfair Display, serif' }}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
