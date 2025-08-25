@@ -4,6 +4,7 @@ import { ScalixityHero } from "@/app/components/scalixity-hero";
 import { ScalixityDashboardAnalytics } from "@/app/components/scalixity-dashboard-analytics";
 import WhatWeDo from "@/app/components/what-we-do";
 import WhyChooseUs from "@/app/components/why-choose-us";
+import { Industries } from "@/app/components/industries";
 import ClientTestimonials from "@/app/components/client-testimonials";
 import InternationalClients from "@/app/components/international-clients";
 import ContactForm from "@/app/components/contact-form";
@@ -23,10 +24,14 @@ export default function ScalixityPage() {
       
       {/* What We Do Section */}
       <WhatWeDo />
+      <Industries />
+      
       
       {/* Why Choose Us Section */}
       <WhyChooseUs />
       
+      {/* Industries Section */}
+    
       {/* Client Testimonials Section */}
       <ClientTestimonials />
       
