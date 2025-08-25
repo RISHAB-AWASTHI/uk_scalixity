@@ -231,40 +231,40 @@ export default function ContactForm() {
             <motion.div variants={itemVariants} className="order-1 lg:order-2">
               <div className="space-y-6 sm:space-y-8">
                 <div>
-                  <h3 className="hidden sm:block text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 text-center sm:text-left" style={{ fontFamily: 'Playfair Display, serif' }}>
                     Let&apos;s start a conversation
                   </h3>
-                  <p className="hidden sm:block text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0 text-center sm:text-left" style={{ fontFamily: 'Playfair Display, serif' }}>
                     Whether you&apos;re a startup looking to scale or an established business seeking digital transformation, 
                     we&apos;re here to help. Our UK-based team provides local expertise with global reach.
                   </p>
                 </div>
 
                 {/* Contact Methods */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                  <div className="text-left">
-                    <h4 className="font-bold text-[#9486D9] mb-1 text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '30px' }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4">
+                  <div className="text-center sm:text-left">
+                    <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
                       Email
                     </h4>
-                    <p className="text-black text-xs sm:text-sm" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500, fontSize: '16px' }}>
+                    <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
                       scalixity@gmail.com
                     </p>
                   </div>
 
-                  <div className="text-left">
-                    <h4 className="font-bold text-[#9486D9] mb-1 text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '30px' }}>
+                  <div className="text-center sm:text-left">
+                    <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
                       Visit Us
                     </h4>
-                    <p className="text-black text-xs sm:text-sm" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500, fontSize: '16px' }}>
+                    <p className="text-black text-sm sm:text-sm" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
                       London, United Kingdom
                     </p>
                   </div>
 
-                  <div className="text-left">
-                    <h4 className="font-bold text-[#9486D9] mb-1 text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '32px' }}>
+                  <div className="text-center sm:text-left">
+                    <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
                       Call Us
                     </h4>
-                    <p className="text-black text-xs sm:text-sm" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500, fontSize: '16px' }}>
+                    <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
                       +44 (0) 20 1234 5678
                     </p>
                   </div>
@@ -272,27 +272,27 @@ export default function ContactForm() {
 
                 {/* Additional Info */}
                 <motion.div
-                  className="hidden sm:block rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                  className="rounded-xl sm:rounded-2xl p-4 sm:p-6 bg-gray-50"
                   whileHover={{ 
                     scale: 1.02,
                     transition: { duration: 0.3 }
                   }}
                 >
-                  <h4 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  <h4 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3 text-center sm:text-left" style={{ fontFamily: 'Playfair Display, serif' }}>
                     Why Choose Scalixity?
                   </h4>
-                  <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-700" style={{ fontFamily: 'Poppins, serif' }}>
-                    <li className="flex items-center gap-2">
-                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4" />
-                      UK-registered company with local expertise
+                  <ul className="space-y-2 sm:space-y-2 text-sm sm:text-base text-gray-700" style={{ fontFamily: 'Poppins, serif' }}>
+                    <li className="flex items-center gap-2 justify-center sm:justify-start">
+                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-center sm:text-left">UK-registered company with local expertise</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4" />
-                      Transparent GBP pricing, no hidden fees
+                    <li className="flex items-center gap-2 justify-center sm:justify-start">
+                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-center sm:text-left">Transparent GBP pricing, no hidden fees</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4" />
-                      24/7 support and dedicated account management
+                    <li className="flex items-center gap-2 justify-center sm:justify-start">
+                      <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-center sm:text-left">24/7 support and dedicated account management</span>
                     </li>
                   </ul>
                 </motion.div>

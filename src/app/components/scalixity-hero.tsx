@@ -40,7 +40,7 @@ export function ScalixityHero() {
     >
       {/* Wave Animation Background */}
       <motion.div 
-        className="absolute bottom-6 sm:bottom-0 lg:bottom-4 xl:bottom-24  2xl:bottom-28 left-0 right-0 z-0 pointer-events-none select-none"
+        className="absolute bottom-20 sm:bottom-20 lg:bottom-4 xl:bottom-24  2xl:bottom-28 left-0 right-0 z-0 pointer-events-none select-none"
         variants={itemVariants}
         initial="hidden"
         animate="visible"

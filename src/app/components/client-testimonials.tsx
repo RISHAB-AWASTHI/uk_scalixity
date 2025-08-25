@@ -96,7 +96,7 @@ export default function ClientTestimonials() {
 
           {/* Mobile: Single Card Carousel */}
           <div className="block lg:hidden">
-            <div className="relative">
+            <div className="relative px-12 sm:px-16">
               <motion.div
                 key={currentIndex}
                 initial={{ opacity: 0, x: 50 }}
@@ -127,7 +127,7 @@ export default function ClientTestimonials() {
                     </blockquote>
                   </div>
 
-                                                        {/* Author Information */}
+                  {/* Author Information */}
                    <div className="flex items-center w-full">
                      <div className="w-12 h-12 rounded-full mr-4 overflow-hidden bg-gray-200 flex-shrink-0">
                        <img 
@@ -160,13 +160,13 @@ export default function ClientTestimonials() {
               {/* Navigation Arrows */}
               <button
                 onClick={prevTestimonial}
-                className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </button>
               <button
                 onClick={nextTestimonial}
-                className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors z-10"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </button>
