@@ -3,6 +3,7 @@ import * as React from "react";
 import { ScalixityHero } from "@/app/components/scalixity-hero";
 import { ScalixityDashboardAnalytics } from "@/app/components/scalixity-dashboard-analytics";
 import WhatWeDo from "@/app/components/what-we-do";
+import WhatWeOffer from "@/app/components/WhatWeOffer";
 import WhyChooseUs from "@/app/components/why-choose-us";
 import ClientTestimonials from "@/app/components/client-testimonials";
 import InternationalClients from "@/app/components/international-clients";
@@ -19,10 +20,13 @@ export default function ScalixityPage() {
       <ScalixityHero />
       
       {/* Dashboard Analytics Section */}
-      <ScalixityDashboardAnalytics />
+      {/* <ScalixityDashboardAnalytics /> */}
+      
+      {/* What We Offer Section */}
+      <WhatWeOffer />
       
       {/* What We Do Section */}
-      <WhatWeDo />
+      {/* <WhatWeDo /> */}
 
       
       
