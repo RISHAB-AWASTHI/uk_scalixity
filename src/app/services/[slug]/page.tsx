@@ -24,7 +24,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
     notFound();
   }
 
-  return <ServiceDetailComponent service={service} />;
+  return (
+    <div className="min-h-screen bg-[#F2E5DC]">
+      <ServiceDetailComponent service={service} />
+    </div>
+  );
 }
 
 // Generate metadata for SEO

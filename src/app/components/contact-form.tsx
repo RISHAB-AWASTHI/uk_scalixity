@@ -240,32 +240,38 @@ export default function ContactForm() {
                   </p>
                 </div>
 
-                {/* Contact Methods */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4">
-                  <div className="text-center sm:text-left">
-                    <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
-                      Email
-                    </h4>
-                    <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
-                      scalixity@gmail.com
-                    </p>
+                {/* Contact Methods - Two Columns */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4">
+                  {/* First Column: Email and Call Us */}
+                  <div className="flex flex-col gap-6">
+                    <div className="text-center sm:text-left">
+                      <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+                        Email
+                      </h4>
+                      <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
+                        scalixity@gmail.com
+                      </p>
+                    </div>
+                    <div className="text-center sm:text-left">
+                      <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+                        Call Us
+                      </h4>
+                      <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
+                        +44 (0) 20 1234 5678
+                      </p>
+                    </div>
                   </div>
-
+                  {/* Second Column: Address */}
                   <div className="text-center sm:text-left">
                     <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
-                      Visit Us
+                      Address
                     </h4>
-                    <p className="text-black text-sm sm:text-sm" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
-                      London, United Kingdom
-                    </p>
-                  </div>
-
-                  <div className="text-center sm:text-left">
-                    <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
-                      Call Us
-                    </h4>
-                    <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
-                      +44 (0) 20 1234 5678
+                    <p className="text-black text-sm sm:text-sm whitespace-pre-line" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
+                      71-75 Shelton Street
+                      {'\n'}Covent Garden
+                      {'\n'}London
+                      {'\n'}WC2H 9JQ
+                      {'\n'}United Kingdom
                     </p>
                   </div>
                 </div>

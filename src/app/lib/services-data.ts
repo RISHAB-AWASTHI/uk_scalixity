@@ -184,7 +184,7 @@ export const servicesData: Service[] = [
     description: 'Build consumer apps, e-commerce apps, internal tools, social/community apps, delivery & logistics apps, and fintech apps. Complete cross-platform solutions with admin panels and real-time capabilities.',
     shortDescription: 'Cross-platform mobile apps with admin panels and real-time sync',
     image: '/icons/mobile.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1757948126/MobileDev_gljz7t.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/e_background_removal/b_rgb:F2E5DC/f_png/v1758084081/MobileApp_idtbrk.png',
     features: [
       'Consumer and e-commerce mobile apps',
       'Internal tools and social/community apps',
