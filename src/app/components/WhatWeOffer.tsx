@@ -23,11 +23,19 @@ const WhatWeOffer: React.FC = () => {
   }));
 
   return (
-    <section id="what-we-offer" className="py-16 px-4 bg-gray-50">
+  <section id="what-we-offer" className="py-16 px-4 bg-transparent">
       <div className="max-w-7xl mx-auto">
         {/* Main Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2
+            className="mb-1 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold mb-4"
+            style={{
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: 600,
+              fontStyle: 'normal',
+              letterSpacing: '0%'
+            }}
+          >
             What Scalixity offers to You
           </h2>
           <div className="w-24 h-1 bg-purple-600 mx-auto"></div>
@@ -35,7 +43,15 @@ const WhatWeOffer: React.FC = () => {
 
         {/* Dynamic Service Heading */}
         <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-semibold text-gray-800 transition-all duration-500">
+          <h3
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black font-semibold transition-all duration-500 mb-2"
+            style={{
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: 600,
+              fontStyle: 'normal',
+              letterSpacing: '0%'
+            }}
+          >
             {services[activeIndex]?.title}
           </h3>
         </div>
@@ -86,7 +102,10 @@ const WhatWeOffer: React.FC = () => {
                         alt={service.title}
                         fill
                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={100}
                         className="object-contain shadow-2xl rounded-xl"
+                        priority={service.id === services[0].id}
+                        unoptimized={true}
                       />
                     </div>
                   </div>

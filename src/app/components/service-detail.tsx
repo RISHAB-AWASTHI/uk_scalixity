@@ -12,9 +12,9 @@ interface ServiceDetailComponentProps {
 
 const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F2E5DC]">
       {/* Breadcrumb Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      {/* <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center space-x-2 text-sm">
             <Link href="/" className="text-purple-600 hover:text-purple-700 transition-colors">
@@ -28,10 +28,10 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             <span className="text-gray-600">{service.title}</span>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Hero Section */}
-      <section className="bg-white py-16">
+      <section className="bg-transparent py-16">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -39,11 +39,39 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h1
+              className="mb-1 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold mb-6"
+              style={{
+                fontFamily: 'Playfair Display, serif',
+                fontWeight: 600,
+                fontStyle: 'normal',
+                letterSpacing: '0%'
+              }}
+            >
               {service.title}
             </h1>
             <div className="w-24 h-1 bg-purple-600 mx-auto mb-6"></div>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p
+              className="text-sm sm:text-base lg:text-lg xl:text-xl text-black font-semibold mb-4 max-w-3xl mx-auto leading-relaxed"
+              style={{
+                fontFamily: 'Playfair Display, serif',
+                fontWeight: 600,
+                fontStyle: 'normal',
+                letterSpacing: '0%'
+              }}
+            >
+              {/* Subheading: use shortDescription if available, else description */}
+              {service.shortDescription || service.description}
+            </p>
+            <p
+              className="text-xs sm:text-sm md:text-base text-black mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto leading-relaxed"
+              style={{
+                fontFamily: 'Playfair Display, serif',
+                fontWeight: 400,
+                fontStyle: 'normal',
+                letterSpacing: '0%'
+              }}
+            >
               {service.description}
             </p>
           </motion.div>
@@ -64,19 +92,29 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
         </div>
       </section>
 
-      {/* Features & Benefits Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Features & Benefits Section as Cards */}
+      <section className="py-16 bg-transparent">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Features */}
+            {/* Features Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center"
+              className="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Key Features</h2>
-              <div className="space-y-4 max-w-lg mx-auto ml-25">
+              <h2
+                className="text-3xl font-bold text-gray-900 mb-8 text-center"
+                style={{
+                  fontFamily: 'Playfair Display, serif',
+                  fontWeight: 600,
+                  fontStyle: 'normal',
+                  letterSpacing: '0%'
+                }}
+              >
+                Key Features
+              </h2>
+              <div className="space-y-4 max-w-lg mx-auto">
                 {service.features.map((feature, index) => (
                   <div key={index} className="flex items-start space-x-3 text-left">
                     <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -84,21 +122,41 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">{feature}</p>
+                    <p
+                      className="text-gray-700 leading-relaxed"
+                      style={{
+                        fontFamily: 'Playfair Display, serif',
+                        fontWeight: 400,
+                        fontStyle: 'normal',
+                        letterSpacing: '0%'
+                      }}
+                    >
+                      {feature}
+                    </p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Benefits */}
+            {/* Benefits Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center"
+              className="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Benefits</h2>
-              <div className="space-y-4 max-w-lg mx-auto ml-25">
+              <h2
+                className="text-3xl font-bold text-gray-900 mb-8 text-center"
+                style={{
+                  fontFamily: 'Playfair Display, serif',
+                  fontWeight: 600,
+                  fontStyle: 'normal',
+                  letterSpacing: '0%'
+                }}
+              >
+                Benefits
+              </h2>
+              <div className="space-y-4 max-w-lg mx-auto">
                 {service.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3 text-left">
                     <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -106,7 +164,17 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">{benefit}</p>
+                    <p
+                      className="text-gray-700 leading-relaxed"
+                      style={{
+                        fontFamily: 'Playfair Display, serif',
+                        fontWeight: 400,
+                        fontStyle: 'normal',
+                        letterSpacing: '0%'
+                      }}
+                    >
+                      {benefit}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -116,7 +184,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
       </section>
 
       {/* Technologies Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -134,23 +202,63 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-row flex-nowrap justify-center items-center gap-4"
           >
-            {service.technologies.map((tech, index) => (
-              <span
-                key={index}
-                className="px-6 py-3 bg-purple-100 text-purple-700 rounded-full font-medium text-sm hover:bg-purple-200 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
+            {service.technologies.map((tech, index) => {
+              // Try to get image from a mapping, fallback to a generic icon
+              const techImages: Record<string, string> = {
+                'React': '/icons/React.png',
+                'Next.js': '/icons/Next.js.png',
+                'TypeScript': '/icons/TypeScript.png',
+                'Python': '/icons/Python.png',
+                'Flask': '/icons/Flask.png',
+                'Node.js': '/icons/Node.js.png',
+                'NestJS': '/icons/Nest.js.png',
+                'Express.js': '/icons/Express.png',
+                'MongoDB': '/icons/MongoDB.png',
+                'MySQL': '/icons/MySQL.png',
+                'Docker': '/icons/Docker.png',
+                'TensorFlow': '/icons/TensorFlow.png',
+                'PyTorch': '/icons/PyTorch.png',
+                'scikit-learn': '/icons/scikit-learn.png',
+                'Firebase': '/icons/Firebase.png',
+                'Flutter': '/icons/Flutter.png',
+                'React Native': '/icons/reactnative.png',
+                'AWS': '/icons/AWS.png',
+              };
+              const imgSrc = techImages[tech] || '/icons/tech.svg';
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center justify-center"
+                  style={{ minWidth: '100px', maxWidth: '120px' }}
+                >
+                  <img
+                    src={imgSrc}
+                    alt={tech}
+                    className="w-12 h-12 mb-4 object-contain"
+                  />
+                  <span
+                    className="text-purple-700 font-medium text-base text-center"
+                    style={{
+                      fontFamily: 'Playfair Display, serif',
+                      fontWeight: 400,
+                      fontStyle: 'normal',
+                      letterSpacing: '0%'
+                    }}
+                  >
+                    {tech}
+                  </span>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* Pricing Section */}
       {service.pricing && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-transparent">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -175,25 +283,65 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Basic implementation</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Basic implementation
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Core features included</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Core features included
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Standard support</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Standard support
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Documentation included</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Documentation included
+                        </span>
                       </li>
                     </ul>
                     <Link
@@ -221,25 +369,65 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Advanced implementation</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Advanced implementation
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">All features + integrations</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          All features + integrations
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Priority support</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Priority support
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Training & documentation</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Training & documentation
+                        </span>
                       </li>
                     </ul>
                     <Link
@@ -262,25 +450,65 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Enterprise implementation</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Enterprise implementation
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Custom features & scaling</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Custom features & scaling
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">24/7 dedicated support</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          24/7 dedicated support
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-gray-700">Complete maintenance</span>
+                        <span
+                          className="text-gray-700"
+                          style={{
+                            fontFamily: 'Playfair Display, serif',
+                            fontWeight: 400,
+                            fontStyle: 'normal',
+                            letterSpacing: '0%'
+                          }}
+                        >
+                          Complete maintenance
+                        </span>
                       </li>
                     </ul>
                     <Link
