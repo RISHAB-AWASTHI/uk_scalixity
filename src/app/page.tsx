@@ -10,6 +10,7 @@ import InternationalClients from "@/app/components/international-clients";
 import ContactForm from "@/app/components/contact-form";
 import ScalixityCTA from "@/app/components/cta";
 import PopupWrapper from "@/app/components/popup-wrapper";
+import InfoModalWrapper from "@/app/components/info-modal-wrapper";
 import { Footer } from "@/app/components/footer";
 export default function ScalixityPage() {
 
@@ -49,6 +50,9 @@ export default function ScalixityPage() {
 
       {/* Popup Form */}
       <PopupWrapper />
+
+      {/* Info Modal */}
+      <InfoModalWrapper />
 
       {/* Footer Section */}
       <Footer />
