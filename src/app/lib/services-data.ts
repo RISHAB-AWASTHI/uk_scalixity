@@ -153,7 +153,7 @@ export const servicesData: Service[] = [
     description: 'Build classification, forecasting, recommendation, computer vision, and NLP pipelines. Complete ML lifecycle including training, fine-tuning, evaluation, and MLOps for production deployment.',
     shortDescription: 'ML/DL pipelines with training, fine-tuning, and MLOps',
     image: '/icons/ml.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758112487/pipeline_tq0bd5.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758175232/pipeline_nvla4v.png',
     features: [
       'Classification and forecasting models',
       'Recommendation and computer vision systems',

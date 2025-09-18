@@ -154,13 +154,12 @@ export default function WhyChooseUs() {
     <section className="relative px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 bg-[#F2E5DC] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full opacity-90"></div>
-        {/* You can add an actual background image here */}
-        {/* <img 
-          src="/images/background-pattern.svg" 
-          alt="Background Pattern"
-          className="w-full h-full object-cover opacity-10"
-        /> */}
+        <img
+          src="https://res.cloudinary.com/dxwspucxw/image/upload/v1755618459/c64db3caaf991855741eb60d0246d83665bb85eb_kyxwpb.png"
+          alt="Wave Background"
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.7 }}
+        />
       </div>
 
       <div className="relative z-10 max-w-[1640px] mx-auto">
@@ -183,11 +182,15 @@ export default function WhyChooseUs() {
 
           {/* Overlay Cards Container */}
           <div className="relative flex items-center justify-center">
-            {/* Background Pattern or Image Placeholder */}
-           
-
+            {/* Transparent Wave Background */}
+            {/* <img
+              src="https://res.cloudinary.com/dxwspucxw/image/upload/v1755660443/vecteezy_abstract-wave-background-minimal-white-geometric-wallpaper_9799009_lu9ftk.png"
+              alt="Wave Background"
+              className="absolute left-0 right-0 top-0 w-full h-full object-cover z-0 pointer-events-none select-none"
+              style={{ opacity: 0.7 }}
+            /> */}
             {/* Cards Grid */}
-            <div className="relative py-8 sm:py-10 lg:py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 md:gap-8 lg:gap-6 xl:gap-8 max-w-[1640px] mx-auto w-full px-2 sm:px-4">
+            <div className="relative py-8 sm:py-10 lg:py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 md:gap-8 lg:gap-6 xl:gap-8 max-w-[1640px] mx-auto w-full px-2 sm:px-4 z-10">
               {features.map((feature) => (
                 <motion.div
                   key={feature.title}
