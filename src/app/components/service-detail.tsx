@@ -93,8 +93,17 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
       </section>
 
       {/* Features & Benefits Section as Cards */}
-      <section className="py-16 bg-transparent">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="py-16 bg-transparent relative overflow-hidden">
+        {/* Wave Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://res.cloudinary.com/dxwspucxw/image/upload/v1755497997/e147818fb004d101c1420f0af7214c9d48b88cdc_njjxqf.png"
+            alt="Wave Background"
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.7 }}
+          />
+        </div>
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Features Card */}
             <motion.div
