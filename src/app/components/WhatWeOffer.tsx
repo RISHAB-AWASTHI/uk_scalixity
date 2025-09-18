@@ -95,7 +95,7 @@ const WhatWeOffer: React.FC = () => {
             {services.map((service) => (
               <SwiperSlide key={service.id}>
                 <Link href={service.link} className="block">
-                  <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 cursor-pointer">
+                  <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-102 cursor-pointer">
                     <div className="aspect-[4/3] w-full relative">
                       <Image
                         src={service.image}
@@ -103,7 +103,7 @@ const WhatWeOffer: React.FC = () => {
                         fill
                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
                         quality={100}
-                        className="object-contain shadow-2xl rounded-xl"
+                        className="object-fill shadow-2xl rounded-xl"
                         priority={service.id === services[0].id}
                         unoptimized={true}
                       />

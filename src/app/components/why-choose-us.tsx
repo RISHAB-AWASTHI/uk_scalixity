@@ -4,10 +4,10 @@ import * as React from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2, PoundSterling, TrendingUp, Clock } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { usePopup } from "@/app/hooks/use-popup";
+import { useInfoModal } from "@/app/hooks/use-info-modal";
 
 export default function WhyChooseUs() {
-  const { openPopup } = usePopup();
+  const { openInfoModal, isOpen, selectedFeature, closeInfoModal } = useInfoModal();
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -41,28 +41,112 @@ export default function WhyChooseUs() {
       title: "UK-Registered Company",
       description: "Fully compliant with UK regulations and business standards",
       color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-500"
+      bgColor: "bg-blue-500",
+      detailedInfo: {
+        overview: "As a fully UK-registered company, Scalixity operates under the highest standards of British business compliance and governance. Our registration ensures that all our operations, data handling, and service delivery meet the strict regulatory requirements expected in the UK market.",
+        benefits: [
+          "Full compliance with UK GDPR and data protection laws",
+          "Registered with Companies House for complete transparency",
+          "UK-based legal framework protects your business interests",
+          "Seamless integration with UK business practices and culture",
+          "Local accountability and dispute resolution processes"
+        ],
+        examples: [
+          "GDPR-compliant data handling for all UK customer information",
+          "UK VAT registration for proper invoicing and tax compliance",
+          "Employment law compliance for any UK-based team members",
+          "Financial regulations adherence for payment processing"
+        ],
+        keyPoints: [
+          "Your business data stays within UK jurisdiction with proper legal protections",
+          "No complex international contract negotiations or legal complications",
+          "Direct accountability under UK law provides peace of mind for partnerships"
+        ]
+      }
     },
     {
       icon: PoundSterling,
       title: "Local GBP Pricing",
       description: "No currency conversion fees, transparent pricing in British Pounds",
       color: "from-green-500 to-green-600",
-      bgColor: "bg-green-500"
+      bgColor: "bg-green-500",
+      detailedInfo: {
+        overview: "All our services are priced transparently in British Pounds, eliminating the uncertainty and additional costs associated with currency conversion. This means predictable budgeting and no surprise charges on your invoices.",
+        benefits: [
+          "No hidden currency conversion fees or fluctuation charges",
+          "Predictable monthly and project costs for better budgeting",
+          "UK bank account compatibility for seamless payments",
+          "VAT handling according to UK regulations",
+          "Local payment methods including direct debit and BACS"
+        ],
+        examples: [
+          "Monthly subscriptions billed directly in GBP without conversion",
+          "Project quotes provided in pounds with no exchange rate surprises",
+          "UK payment methods like direct debit and bank transfers accepted",
+          "Proper VAT invoicing for UK business tax purposes"
+        ],
+        keyPoints: [
+          "Typical currency conversion fees can add 2-4% to overseas service costs",
+          "Exchange rate fluctuations can make budgeting unpredictable with foreign providers",
+          "Local banking integration makes payment processing faster and more reliable"
+        ]
+      }
     },
     {
       icon: TrendingUp,
       title: "Scalable for Startups & SMEs",
       description: "Solutions that grow with your business, from startup to enterprise",
       color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-500"
+      bgColor: "bg-purple-500",
+      detailedInfo: {
+        overview: "Our technology solutions are specifically designed to scale with UK startups and SMEs. We understand the unique challenges of growing businesses and provide flexible, cost-effective solutions that evolve with your needs without requiring complete overhauls.",
+        benefits: [
+          "Modular architecture allows adding features as you grow",
+          "Cost-effective starter packages for early-stage businesses",
+          "Seamless migration paths from basic to advanced features",
+          "No vendor lock-in - own your data and code",
+          "UK SME-focused support and understanding of local market challenges"
+        ],
+        examples: [
+          "Start with a basic website, scale to e-commerce, then add enterprise features",
+          "Begin with cloud hosting for 100 users, scale to thousands seamlessly",
+          "Launch with essential features, add advanced analytics and integrations later",
+          "Prototype with basic tools, evolve to full production systems"
+        ],
+        keyPoints: [
+          "UK SMEs need solutions that don't require massive upfront investments",
+          "Many providers focus on large enterprises, leaving smaller businesses underserved",
+          "Our flexible approach means you only pay for what you need, when you need it"
+        ]
+      }
     },
     {
       icon: Clock,
       title: "24/7 Support",
       description: "Round-the-clock assistance whenever you need us",
       color: "from-amber-500 to-amber-600",
-      bgColor: "bg-amber-500"
+      bgColor: "bg-amber-500",
+      detailedInfo: {
+        overview: "Our comprehensive 24/7 support ensures your business operations never stop. With UK-based support staff who understand local business hours and requirements, plus global coverage for urgent issues, you're never left without assistance.",
+        benefits: [
+          "UK business hours coverage with local support staff",
+          "Emergency support available outside UK hours",
+          "Multiple communication channels (phone, email, chat, ticket system)",
+          "Proactive monitoring and issue prevention",
+          "Knowledge base and self-service options for quick solutions"
+        ],
+        examples: [
+          "Critical system issues resolved within 1 hour during UK business hours",
+          "Late-night deployment support for minimal business disruption",
+          "Weekend emergency response for mission-critical applications",
+          "Proactive monitoring alerts prevent issues before they impact users"
+        ],
+        keyPoints: [
+          "UK businesses can't afford extended downtime in today's competitive market",
+          "Local support staff understand UK business culture and communication styles",
+          "Global coverage ensures support even during UK holidays and weekends"
+        ]
+      }
     }
   ];
 
@@ -112,7 +196,7 @@ export default function WhyChooseUs() {
                   whileHover={{ 
                     transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  onClick={openPopup}
+                  onClick={() => openInfoModal(feature)}
                 >
                   {/* Floating Icon */}
                   <div
@@ -150,7 +234,7 @@ export default function WhyChooseUs() {
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                         className="flex items-center gap-2 cursor-pointer group mt-auto justify-center"
-                        onClick={openPopup}
+                        onClick={() => openInfoModal(feature)}
                       >
                         <span className="text-xs sm:text-sm md:text-base lg:text-lg text-black font-medium hover:underline">Learn More</span>
                         <span className="text-sm sm:text-base md:text-lg lg:text-xl text-black group-hover:translate-x-1 transition-transform duration-200">→</span>
@@ -193,7 +277,7 @@ export default function WhyChooseUs() {
                     className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center lg:items-start"
                   >
                     <Button 
-                      onClick={openPopup}
+                      onClick={() => openInfoModal(features[0])}
                       className="w-full sm:w-auto bg-[#9B7BB8] hover:bg-[#8A6AA7] text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:shadow-lg"
                     >
                       Start Your UK Journey

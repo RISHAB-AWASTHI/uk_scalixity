@@ -24,7 +24,7 @@ export const servicesData: Service[] = [
     description: 'Build real-time BI dashboards, KPI monitors, and operational dashboards with role-based access, drill-down analytics, and alerting capabilities. Seamlessly integrate with SQL/NoSQL databases, APIs, and CSV data sources.',
     shortDescription: 'Real-time BI dashboards with role-based access and drill-down analytics',
     image: '/icons/analytics.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1755593092/UI_screen_iodnip.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758093837/UI_screen_iodnip_wligx6.png',
     features: [
       'Real-time BI dashboards and KPI monitors',
       'Operational dashboards with role-based access',
@@ -88,7 +88,7 @@ export const servicesData: Service[] = [
     description: 'Create marketing sites, portals, internal tools, and SaaS MVPs with SEO-ready static and dynamic capabilities. From simple websites to complex applications, we deliver responsive, scalable solutions.',
     shortDescription: 'Marketing sites, portals, internal tools, and SaaS MVPs',
     image: '/icons/webapp.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1757947314/traffic_analytics_aesfiz.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758101352/Screenshot_17-9-2025_145439_localhost_y4ker3.jpg',
     features: [
       'Marketing sites and company portals',
       'Internal tools and SaaS MVPs',
@@ -120,7 +120,8 @@ export const servicesData: Service[] = [
     description: 'Build support/sales chatbots, knowledge assistants, and workflow automations. Deploy RAG assistants grounded in your data with comprehensive integrations and intelligent handoff capabilities.',
     shortDescription: 'Support/sales chatbots and RAG assistants grounded in your data',
     image: '/icons/ai.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1757947313/ChatBot_rso968.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758115740/chatbott_wp2vet.jpg',
+    // heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758115885/chat_thzsoi.jpg',
     features: [
       'Support and sales chatbots',
       'Knowledge assistants and workflow automations',
@@ -152,7 +153,7 @@ export const servicesData: Service[] = [
     description: 'Build classification, forecasting, recommendation, computer vision, and NLP pipelines. Complete ML lifecycle including training, fine-tuning, evaluation, and MLOps for production deployment.',
     shortDescription: 'ML/DL pipelines with training, fine-tuning, and MLOps',
     image: '/icons/ml.svg',
-    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1755593092/UI_screen_iodnip.png',
+    heroImage: 'https://res.cloudinary.com/dxwspucxw/image/upload/v1758112487/pipeline_tq0bd5.png',
     features: [
       'Classification and forecasting models',
       'Recommendation and computer vision systems',
