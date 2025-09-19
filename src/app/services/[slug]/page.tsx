@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import ServiceDetailComponent from '@/app/components/service-detail';
 
+export const dynamic = 'force-dynamic';
+
 interface PricingPlan {
   priceRange: string;
   description: string;
@@ -38,18 +40,25 @@ interface ServicePageProps {
 async function getServiceBySlug(slug: string): Promise<Service | null> {
   try {
     const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+    console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
+    
     const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
       cache: 'no-store'
     });
     
     if (!response.ok) {
+      console.error(`API Error: ${response.status} ${response.statusText}`);
       return null;
     }
     
     const data = await response.json();
+    console.log('API Response:', data);
     
     const service: Service | null = data.success ? data.data : null;
-    if (!service) return null;
+    if (!service) {
+      console.error('Service not found in API response');
+      return null;
+    }
 
     // If technologies are plain strings or missing icons, fetch enriched technologies
     const needsTechIcons = Array.isArray(service.technologies)
@@ -108,12 +117,16 @@ export async function generateStaticParams() {
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
+  console.log('Rendering service page for slug:', slug);
+  
   const service = await getServiceBySlug(slug);
 
   if (!service) {
+    console.error('Service not found, showing 404');
     notFound();
   }
 
+  console.log('Service found, rendering page');
   return (
     <div className="min-h-screen bg-[#F2E5DC] overflow-x-hidden">
       <ServiceDetailComponent service={service} />
