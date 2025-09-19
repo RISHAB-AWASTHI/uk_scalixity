@@ -39,51 +39,11 @@ interface ServicePageProps {
 // Fetch service by slug from backend API
 async function getServiceBySlug(slug: string): Promise<Service | null> {
   try {
-    let baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
-    
-    // If using HTTPS and it fails, try HTTP as fallback
-    if (baseURL.startsWith('https://') && process.env.NODE_ENV === 'production') {
-      try {
-        console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
-        const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
-          cache: 'no-store',
-          // Disable SSL verification for expired certificates during build
-          ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
-            // @ts-ignore - Node.js specific option
-            agent: new (require('https').Agent)({ rejectUnauthorized: false })
-          })
-        });
-        
-        if (!response.ok) {
-          console.error(`API Error: ${response.status} ${response.statusText}`);
-          return null;
-        }
-        
-        const data = await response.json();
-        console.log('API Response:', data);
-        
-        const service: Service | null = data.success ? data.data : null;
-        if (!service) {
-          console.error('Service not found in API response');
-          return null;
-        }
-        
-        return service;
-      } catch (httpsError) {
-        console.warn('HTTPS failed, trying HTTP fallback:', httpsError instanceof Error ? httpsError.message : String(httpsError));
-        baseURL = baseURL.replace('https://', 'http://');
-      }
-    }
-    
+    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
     console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
     
     const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
-      cache: 'no-store',
-      // Disable SSL verification for expired certificates during build
-      ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
-        // @ts-ignore - Node.js specific option
-        agent: new (require('https').Agent)({ rejectUnauthorized: false })
-      })
+      cache: 'no-store'
     });
     
     if (!response.ok) {
@@ -134,12 +94,7 @@ async function getAllServiceSlugs(): Promise<string[]> {
     console.log('Fetching slugs from:', `${baseURL}/api/website-services/slugs/all`);
     
     const response = await fetch(`${baseURL}/api/website-services/slugs/all`, {
-      cache: 'no-store',
-      // Disable SSL verification for expired certificates during build
-      ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
-        // @ts-ignore - Node.js specific option
-        agent: new (require('https').Agent)({ rejectUnauthorized: false })
-      })
+      cache: 'no-store'
     });
     
     if (!response.ok) {
