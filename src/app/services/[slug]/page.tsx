@@ -114,6 +114,7 @@ async function getAllServiceSlugs(): Promise<string[]> {
       });
     } catch (sslError) {
       // If HTTPS fails due to SSL, try HTTP as fallback
+      console.error('SSL Error details:', sslError);
       if (baseURL.startsWith('https://') && sslError instanceof Error && sslError.message.includes('certificate')) {
         console.warn('HTTPS failed due to SSL, trying HTTP fallback');
         baseURL = baseURL.replace('https://', 'http://');
