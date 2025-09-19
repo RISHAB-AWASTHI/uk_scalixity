@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
-import { servicesData } from "../lib/services-data";
+// Data will be fetched from backend
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,14 +13,46 @@ import "swiper/css/pagination";
 
 const WhatWeOffer: React.FC = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [services, setServices] = React.useState<Array<{ id: string; slug: string; title: string; image: string; }>>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
 
-  const services = servicesData.map((s) => ({
-    id: s.id,
-    title: s.title,
-    // prefer heroImage for carousel visuals, fallback to image
-    image: s.heroImage || s.image,
-    link: `/services/${s.slug}`,
-  }));
+  // Fallback image for empty or missing images
+  const fallbackImage = '/placeholder.svg';
+
+  React.useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    const fetchServices = async () => {
+      try {
+        const res = await fetch(`${baseURL}/api/website-services/carousel`, { signal: controller.signal });
+        if (!res.ok) throw new Error('Failed to load services');
+        const json = await res.json();
+        const rawData: Array<{ id: string; slug: string; title: string; image?: string; heroImage?: string; }> = json?.data || [];
+        // Handle both 'image' and 'heroImage' field names from backend
+        const data = rawData.map(item => ({
+          id: item.id,
+          slug: item.slug,
+          title: item.title,
+          image: item.image || item.heroImage || ''
+        }));
+        if (isMounted) {
+          setServices(data);
+          setIsLoading(false);
+        }
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('WhatWeOffer fetch error:', err);
+        }
+        if (isMounted) setIsLoading(false);
+      }
+    };
+    fetchServices();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [baseURL]);
 
   return (
   <section id="what-we-offer" className="py-16 px-4 bg-transparent">
@@ -52,67 +84,77 @@ const WhatWeOffer: React.FC = () => {
               letterSpacing: '0%'
             }}
           >
-            {services[activeIndex]?.title}
+            {services[activeIndex]?.title || 'Our Services'}
           </h3>
         </div>
 
         {/* Swiper Carousel */}
         <div className="relative overflow-hidden">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1.2}
-            centeredSlides={true}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-              bulletClass: "swiper-pagination-bullet",
-              bulletActiveClass: "swiper-pagination-bullet-active",
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1.3,
-                spaceBetween: 40,
-              },
-              768: {
-                slidesPerView: 1.4,
-                spaceBetween: 50,
-              },
-              1024: {
-                slidesPerView: 1.5,
-                spaceBetween: 60,
-              },
-            }}
-            onSlideChange={(swiper) => {
-              setActiveIndex(swiper.realIndex);
-            }}
-            className="pb-12"
-          >
-            {services.map((service) => (
-              <SwiperSlide key={service.id}>
-                <Link href={service.link} className="block">
-                  <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-102 cursor-pointer">
-                    <div className="aspect-[4/3] w-full relative">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
-                        quality={100}
-                        className="object-fill shadow-2xl rounded-xl"
-                        priority={service.id === services[0].id}
-                        unoptimized={true}
-                      />
+          {isLoading ? (
+            <div className="flex items-center justify-center h-64">
+              <div className="w-8 h-8 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : services.length === 0 ? (
+            <div className="flex items-center justify-center h-64 text-gray-500">
+              <p>No services available at the moment.</p>
+            </div>
+          ) : (
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={30}
+              slidesPerView={1.2}
+              centeredSlides={true}
+              loop={services.length > 2}
+              autoplay={services.length > 1 ? {
+                delay: 4000,
+                disableOnInteraction: false,
+              } : false}
+              pagination={{
+                clickable: true,
+                bulletClass: "swiper-pagination-bullet",
+                bulletActiveClass: "swiper-pagination-bullet-active",
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 40,
+                },
+                768: {
+                  slidesPerView: 1.4,
+                  spaceBetween: 50,
+                },
+                1024: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 60,
+                },
+              }}
+              onSlideChange={(swiper) => {
+                setActiveIndex(swiper.realIndex);
+              }}
+              className="pb-12"
+            >
+              {services.map((service) => (
+                <SwiperSlide key={service.id}>
+                  <Link href={`/services/${service.slug}`} className="block">
+                    <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-102 cursor-pointer">
+                      <div className="aspect-[4/3] w-full relative">
+                        <Image
+                          src={service.image || fallbackImage}
+                          alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
+                          quality={100}
+                          className="object-contain shadow-2xl rounded-xl bg-gray-100"
+                          priority={services.length > 0 && service.id === services[0].id}
+                          unoptimized={true}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
 
           {/* Custom Pagination Styles */}
           <style jsx global>{`

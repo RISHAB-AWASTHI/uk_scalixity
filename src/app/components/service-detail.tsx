@@ -4,13 +4,46 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Service } from '@/app/lib/services-data';
+
+interface PricingPlan {
+  priceRange: string;
+  description: string;
+  bulletPoints: string[];
+}
+
+type PricingPlans = Record<string, PricingPlan>;
+
+interface Service {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  image: string;
+  heroImage: string;
+  features: string[];
+  technologies: Array<{ name: string; icon: string }> | string[];
+  benefits: string[];
+  keywords?: string[];
+  pricingPlans?: PricingPlans;
+  pricing?: {
+    starting: string;
+    description: string;
+  };
+}
 
 interface ServiceDetailComponentProps {
   service: Service;
 }
 
 const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service }) => {
+  React.useEffect(() => {
+    // Debug: Inspect data coming from backend
+    // Includes pricing and pricingPlans if present
+    // This logs in the browser console because this is a client component
+    console.log('ServiceDetail - service data:', service);
+  }, [service]);
+
   return (
     <div className="min-h-screen bg-[#F2E5DC]">
       {/* Breadcrumb Navigation */}
@@ -84,7 +117,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             className="max-w-5xl mx-auto"
           >
             <img
-              src={service.heroImage}
+              src={service.heroImage || service.image}
               alt={service.title}
               className="w-full h-auto object-contain shadow-2xl rounded-xl"
             />
@@ -213,29 +246,11 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-row flex-nowrap justify-center items-center gap-4"
           >
-            {service.technologies.map((tech, index) => {
-              // Try to get image from a mapping, fallback to a generic icon
-              const techImages: Record<string, string> = {
-                'React': '/icons/React.png',
-                'Next.js': '/icons/Next.js.png',
-                'TypeScript': '/icons/TypeScript.png',
-                'Python': '/icons/Python.png',
-                'Flask': '/icons/Flask.png',
-                'Node.js': '/icons/Node.js.png',
-                'NestJS': '/icons/Nest.js.png',
-                'Express.js': '/icons/Express.png',
-                'MongoDB': '/icons/MongoDB.png',
-                'MySQL': '/icons/MySQL.png',
-                'Docker': '/icons/Docker.png',
-                'TensorFlow': '/icons/TensorFlow.png',
-                'PyTorch': '/icons/PyTorch.png',
-                'scikit-learn': '/icons/scikit-learn.png',
-                'Firebase': '/icons/Firebase.png',
-                'Flutter': '/icons/Flutter.png',
-                'React Native': '/icons/reactnative.png',
-                'AWS': '/icons/AWS.png',
-              };
-              const imgSrc = techImages[tech] || '/icons/tech.svg';
+            {(service.technologies as any[]).map((tech, index) => {
+              const isObject = typeof tech === 'object' && tech !== null;
+              const name = isObject ? (tech.name || tech.technology || '') : String(tech);
+              const icon = isObject ? (tech.icon || '') : '';
+              const imgSrc = icon || '/icons/tech.svg';
               return (
                 <div
                   key={index}
@@ -244,7 +259,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                 >
                   <img
                     src={imgSrc}
-                    alt={tech}
+                    alt={name}
                     className="w-12 h-12 mb-4 object-contain"
                   />
                   <span
@@ -256,7 +271,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                       letterSpacing: '0%'
                     }}
                   >
-                    {tech}
+                    {name}
                   </span>
                 </div>
               );
@@ -266,7 +281,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
       </section>
 
       {/* Pricing Section */}
-      {service.pricing && (
+      {service.pricingPlans && Object.keys(service.pricingPlans).length > 0 && (
         <section className="py-16 bg-transparent">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
@@ -279,259 +294,83 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
               <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
                 Choose the plan that best fits your project requirements and budget.
               </p>
-              
-              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {/* Beginner Plan */}
-                <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-gray-200 hover:border-purple-300 transition-colors">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Beginner</h3>
-                    <div className="text-4xl font-bold text-purple-600 mb-2">₹25K - ₹50K</div>
-                    <p className="text-gray-600 mb-6">Perfect for startups and small projects</p>
-                    <ul className="text-left space-y-3 mb-8">
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Basic implementation
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Core features included
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Standard support
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Documentation included
-                        </span>
-                      </li>
-                    </ul>
-                    <Link
-                      href="/#contact"
-                      className="block w-full bg-purple-100 text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-purple-200 transition-colors"
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Professional Plan */}
-                <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-purple-500 relative hover:border-purple-600 transition-colors">
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional</h3>
-                    <div className="text-4xl font-bold text-purple-600 mb-2">₹50K - ₹1L</div>
-                    <p className="text-gray-600 mb-6">Ideal for growing businesses</p>
-                    <ul className="text-left space-y-3 mb-8">
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Advanced implementation
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          All features + integrations
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Priority support
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Training & documentation
-                        </span>
-                      </li>
-                    </ul>
-                    <Link
-                      href="/#contact"
-                      className="block w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Pro Plan */}
-                <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-gray-200 hover:border-purple-300 transition-colors">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Pro</h3>
-                    <div className="text-4xl font-bold text-purple-600 mb-2">₹1L - ₹1.5L</div>
-                    <p className="text-gray-600 mb-6">Enterprise-grade solutions</p>
-                    <ul className="text-left space-y-3 mb-8">
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Enterprise implementation
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Custom features & scaling
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          24/7 dedicated support
-                        </span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span
-                          className="text-gray-700"
-                          style={{
-                            fontFamily: 'Playfair Display, serif',
-                            fontWeight: 400,
-                            fontStyle: 'normal',
-                            letterSpacing: '0%'
-                          }}
-                        >
-                          Complete maintenance
-                        </span>
-                      </li>
-                    </ul>
-                    <Link
-                      href="/#contact"
-                      className="block w-full bg-purple-100 text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-purple-200 transition-colors"
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              
+              {
+                (() => {
+                  const order = ['beginner', 'professional', 'pro'];
+                  const entries = Object.entries(service.pricingPlans as PricingPlans).sort((a, b) => {
+                    const ai = order.indexOf(a[0].toLowerCase());
+                    const bi = order.indexOf(b[0].toLowerCase());
+                    if (ai === -1 && bi === -1) return a[0].localeCompare(b[0]);
+                    if (ai === -1) return 1;
+                    if (bi === -1) return -1;
+                    return ai - bi;
+                  });
+                  return (
+                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                      {entries.map(([key, plan]) => {
+                        const isProfessional = key.toLowerCase() === 'professional';
+                        return (
+                          <div
+                            key={key}
+                            className={
+                              isProfessional
+                                ? 'bg-white rounded-xl shadow-lg p-8 border-2 border-purple-500 relative hover:border-purple-600 transition-colors'
+                                : 'bg-white rounded-xl shadow-lg p-8 border-2 border-gray-200 hover:border-purple-300 transition-colors'
+                            }
+                          >
+                            {isProfessional && (
+                              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                                <span className="bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                  Most Popular
+                                </span>
+                              </div>
+                            )}
+                            <div className="text-center">
+                              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                              </h3>
+                              <div className="text-4xl font-bold text-purple-600 mb-2">{plan.priceRange || 'Contact Us'}</div>
+                              <p className="text-gray-600 mb-6">{plan.description}</p>
+                              <ul className="text-left space-y-3 mb-8">
+                                {plan.bulletPoints.map((point, idx) => (
+                                  <li key={idx} className="flex items-center space-x-2">
+                                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                    <span
+                                      className="text-gray-700"
+                                      style={{
+                                        fontFamily: 'Playfair Display, serif',
+                                        fontWeight: 400,
+                                        fontStyle: 'normal',
+                                        letterSpacing: '0%'
+                                      }}
+                                    >
+                                      {point}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                              <Link
+                                href="/#contact"
+                                className={
+                                  isProfessional
+                                    ? 'block w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors'
+                                    : 'block w-full bg-purple-100 text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-purple-200 transition-colors'
+                                }
+                              >
+                                Get Started
+                              </Link>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()
+              }
               <div className="mt-12 text-center">
-                <p className="text-gray-600 mb-4">{service.pricing.description}</p>
+                <p className="text-gray-600 mb-4">{service.pricing?.description || 'Contact us for custom pricing based on your requirements.'}</p>
                 <p className="text-sm text-gray-500">
                   All prices are in Indian Rupees (INR). Final pricing depends on project scope and requirements.
                 </p>
