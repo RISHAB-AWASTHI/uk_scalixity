@@ -4,33 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-interface PricingPlan {
-  priceRange: string;
-  description: string;
-  bulletPoints: string[];
-}
-
-type PricingPlans = Record<string, PricingPlan>;
-
-interface Service {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  shortDescription: string;
-  image: string;
-  heroImage: string;
-  features: string[];
-  technologies: Array<{ name: string; icon: string }> | string[];
-  benefits: string[];
-  keywords?: string[];
-  pricingPlans?: PricingPlans;
-  pricing?: {
-    starting: string;
-    description: string;
-  };
-}
+import { type Service } from '@/app/lib/api';
 
 interface ServiceDetailComponentProps {
   service: Service;
@@ -46,23 +20,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
 
   return (
     <div className="min-h-screen bg-[#F2E5DC] overflow-x-hidden">
-      {/* Breadcrumb Navigation */}
-      {/* <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-purple-600 hover:text-purple-700 transition-colors">
-              Home
-            </Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/#what-we-offer" className="text-purple-600 hover:text-purple-700 transition-colors">
-              Services
-            </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">{service.title}</span>
-          </div>
-        </div>
-      </nav> */}
-
+     
       {/* Hero Section */}
       <section className="bg-transparent py-16">
         <div className="max-w-7xl mx-auto px-4">
@@ -297,7 +255,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
               {
                 (() => {
                   const order = ['beginner', 'professional', 'pro'];
-                  const entries = Object.entries(service.pricingPlans as PricingPlans).sort((a, b) => {
+                  const entries = Object.entries(service.pricingPlans || {}).sort((a, b) => {
                     const ai = order.indexOf(a[0].toLowerCase());
                     const bi = order.indexOf(b[0].toLowerCase());
                     if (ai === -1 && bi === -1) return a[0].localeCompare(b[0]);
