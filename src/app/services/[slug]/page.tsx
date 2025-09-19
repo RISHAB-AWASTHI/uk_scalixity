@@ -47,9 +47,7 @@ async function getServiceBySlug(slug: string): Promise<Service | null> {
     }
     
     const data = await response.json();
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('ServicePage API response (/by slug):', JSON.stringify(data));
-    }
+    
     const service: Service | null = data.success ? data.data : null;
     if (!service) return null;
 
@@ -63,9 +61,7 @@ async function getServiceBySlug(slug: string): Promise<Service | null> {
         const techRes = await fetch(`${baseURL}/api/website-services/${slug}/technologies`, { cache: 'no-store' });
         if (techRes.ok) {
           const techJson = await techRes.json();
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('ServicePage API response (technologies):', JSON.stringify(techJson));
-          }
+          
           if (techJson.success && Array.isArray(techJson.data)) {
             (service as any).technologies = techJson.data;
           }
@@ -95,9 +91,7 @@ async function getAllServiceSlugs(): Promise<string[]> {
     }
     
     const data = await response.json();
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('ServicePage API response (slugs):', JSON.stringify(data));
-    }
+    
     return data.success ? data.data : [];
   } catch (error) {
     console.error('Error fetching service slugs:', error);
@@ -121,7 +115,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2E5DC]">
+    <div className="min-h-screen bg-[#F2E5DC] overflow-x-hidden">
       <ServiceDetailComponent service={service} />
     </div>
   );

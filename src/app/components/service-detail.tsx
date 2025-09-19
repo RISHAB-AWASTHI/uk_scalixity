@@ -41,11 +41,11 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
     // Debug: Inspect data coming from backend
     // Includes pricing and pricingPlans if present
     // This logs in the browser console because this is a client component
-    console.log('ServiceDetail - service data:', service);
+   
   }, [service]);
 
   return (
-    <div className="min-h-screen bg-[#F2E5DC]">
+    <div className="min-h-screen bg-[#F2E5DC] overflow-x-hidden">
       {/* Breadcrumb Navigation */}
       {/* <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -119,7 +119,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             <img
               src={service.heroImage || service.image}
               alt={service.title}
-              className="w-full h-auto object-contain shadow-2xl rounded-xl"
+              className="w-full h-auto object-contain shadow-2xl rounded-xl select-none"
             />
           </motion.div>
         </div>
@@ -244,7 +244,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-row flex-nowrap justify-center items-center gap-4"
+            className="flex flex-row flex-wrap justify-center items-center gap-4 overflow-x-hidden"
           >
             {(service.technologies as any[]).map((tech, index) => {
               const isObject = typeof tech === 'object' && tech !== null;
