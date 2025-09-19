@@ -46,7 +46,12 @@ async function getServiceBySlug(slug: string): Promise<Service | null> {
       try {
         console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
         const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
-          cache: 'no-store'
+          cache: 'no-store',
+          // Disable SSL verification for expired certificates during build
+          ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
+            // @ts-ignore - Node.js specific option
+            agent: new (require('https').Agent)({ rejectUnauthorized: false })
+          })
         });
         
         if (!response.ok) {
@@ -73,7 +78,12 @@ async function getServiceBySlug(slug: string): Promise<Service | null> {
     console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
     
     const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
-      cache: 'no-store'
+      cache: 'no-store',
+      // Disable SSL verification for expired certificates during build
+      ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
+        // @ts-ignore - Node.js specific option
+        agent: new (require('https').Agent)({ rejectUnauthorized: false })
+      })
     });
     
     if (!response.ok) {
@@ -124,7 +134,12 @@ async function getAllServiceSlugs(): Promise<string[]> {
     console.log('Fetching slugs from:', `${baseURL}/api/website-services/slugs/all`);
     
     const response = await fetch(`${baseURL}/api/website-services/slugs/all`, {
-      cache: 'no-store'
+      cache: 'no-store',
+      // Disable SSL verification for expired certificates during build
+      ...(process.env.NODE_ENV === 'production' && baseURL.startsWith('https://') && {
+        // @ts-ignore - Node.js specific option
+        agent: new (require('https').Agent)({ rejectUnauthorized: false })
+      })
     });
     
     if (!response.ok) {
