@@ -39,12 +39,26 @@ interface ServicePageProps {
 // Fetch service by slug from backend API
 async function getServiceBySlug(slug: string): Promise<Service | null> {
   try {
-    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+    let baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
     console.log('Fetching service from:', `${baseURL}/api/website-services/${slug}`);
     
-    const response = await fetch(`${baseURL}/api/website-services/${slug}`, {
-      cache: 'no-store'
-    });
+    let response;
+    try {
+      response = await fetch(`${baseURL}/api/website-services/${slug}`, {
+        cache: 'no-store'
+      });
+    } catch (sslError) {
+      // If HTTPS fails due to SSL, try HTTP as fallback
+      if (baseURL.startsWith('https://') && sslError instanceof Error && sslError.message.includes('certificate')) {
+        console.warn('HTTPS failed due to SSL, trying HTTP fallback');
+        baseURL = baseURL.replace('https://', 'http://');
+        response = await fetch(`${baseURL}/api/website-services/${slug}`, {
+          cache: 'no-store'
+        });
+      } else {
+        throw sslError;
+      }
+    }
     
     if (!response.ok) {
       console.error(`API Error: ${response.status} ${response.statusText}`);
@@ -90,12 +104,26 @@ async function getServiceBySlug(slug: string): Promise<Service | null> {
 // Fetch all service slugs from backend API
 async function getAllServiceSlugs(): Promise<string[]> {
   try {
-    const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+    let baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
     console.log('Fetching slugs from:', `${baseURL}/api/website-services/slugs/all`);
     
-    const response = await fetch(`${baseURL}/api/website-services/slugs/all`, {
-      cache: 'no-store'
-    });
+    let response;
+    try {
+      response = await fetch(`${baseURL}/api/website-services/slugs/all`, {
+        cache: 'no-store'
+      });
+    } catch (sslError) {
+      // If HTTPS fails due to SSL, try HTTP as fallback
+      if (baseURL.startsWith('https://') && sslError instanceof Error && sslError.message.includes('certificate')) {
+        console.warn('HTTPS failed due to SSL, trying HTTP fallback');
+        baseURL = baseURL.replace('https://', 'http://');
+        response = await fetch(`${baseURL}/api/website-services/slugs/all`, {
+          cache: 'no-store'
+        });
+      } else {
+        throw sslError;
+      }
+    }
     
     if (!response.ok) {
       console.error(`Slugs API Error: ${response.status} ${response.statusText}`);
