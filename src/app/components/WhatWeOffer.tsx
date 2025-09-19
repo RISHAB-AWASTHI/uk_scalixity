@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
-// Data will be fetched from backend
+import { ServiceCarouselItem } from "@/app/lib/types";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 
 const WhatWeOffer: React.FC = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const [services, setServices] = React.useState<Array<{ id: string; slug: string; title: string; image: string; }>>([]);
+  const [services, setServices] = React.useState<ServiceCarouselItem[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
 
