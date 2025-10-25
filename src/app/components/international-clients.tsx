@@ -59,8 +59,7 @@ export default function InternationalClients() {
               International Clients
             </h3>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-xl text-black max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl leading-relaxed mb-3 xs:mb-4 sm:mb-5 md:mb-6 px-1 xs:px-2 sm:px-0 text-left font-poppins font-normal">
-              While we&apos;re based in the UK, our solutions serve businesses worldwide. From London to Mumbai, 
-              we deliver technology that transcends borders while maintaining local compliance and support.
+              While we&apos;re based globally, our solutions serve businesses everywhere. From major cities to emerging markets, we deliver technology that transcends borders while maintaining local compliance and support.
             </p>
            
                                                    {/* Client Logos with Map Icons */}

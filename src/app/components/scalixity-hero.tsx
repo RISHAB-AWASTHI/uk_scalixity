@@ -82,7 +82,7 @@ export function ScalixityHero() {
               }}
               variants={itemVariants}
             >
-              Affordable Tech Solutions Built for UK Businesses
+              Affordable Tech Solutions Built for Businesses
             </motion.h1>
 
             {/* Sub-headline */}

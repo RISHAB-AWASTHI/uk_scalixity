@@ -90,7 +90,7 @@ export default function ClientTestimonials() {
               Scalixity Success Stories
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-900 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Trusted by businesses across the UK and internationally
+            Trusted by businesses worldwide
             </p>
           </motion.div>
 

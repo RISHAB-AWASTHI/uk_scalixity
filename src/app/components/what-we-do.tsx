@@ -118,7 +118,7 @@ export default function WhatWeDo() {
             What Scalixity Offers
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-900 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Comprehensive technology solutions designed for UK businesses
+              Comprehensive technology solutions designed for businesses
             </p>
           </motion.div>
 
