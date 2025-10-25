@@ -269,7 +269,7 @@ export default function WhyChooseUs() {
                 {/* Left Side - Content */}
                 <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
                   <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3 sm:mb-4 mt-4 sm:mt-0 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Built for the  Market
+                    Built for the Global Market
                   </h3>
                   <p className="text-sm sm:text-base md:text-lg lg:text-xl text-black leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
                     We understand the unique challenges and opportunities facing businesses. Our solutions are tailored to meet local regulations, 
