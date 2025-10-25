@@ -46,7 +46,7 @@ export default function ScalixityCTA() {
             </div>
             
             <p className="text-sm sm:text-base text-gray-600 max-w-lg lg:max-w-none px-2 sm:px-0">
-              Based in the UK, delivering affordable tech solutions that help businesses scale without overspending.
+            Delivering affordable tech solutions that help businesses scale without overspending.
             </p>
           </div>
           

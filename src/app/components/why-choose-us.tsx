@@ -38,52 +38,52 @@ export default function WhyChooseUs() {
   const features = [
     {
       icon: Building2,
-      title: "UK-Registered Company",
-      description: "Fully compliant with UK regulations and business standards",
+      title: "Registered Company",
+      description: "Fully compliant with regulations and business standards",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500",
       detailedInfo: {
-        overview: "As a fully UK-registered company, Scalixity operates under the highest standards of British business compliance and governance. Our registration ensures that all our operations, data handling, and service delivery meet the strict regulatory requirements expected in the UK market.",
+        overview: "As a fully registered company, Scalixity operates under the highest standards of business compliance and governance. Our registration ensures that all our operations, data handling, and service delivery meet the strict regulatory requirements expected in the market.",
         benefits: [
-          "Full compliance with UK GDPR and data protection laws",
-          "Registered with Companies House for complete transparency",
-          "UK-based legal framework protects your business interests",
-          "Seamless integration with UK business practices and culture",
+          "Full compliance with GDPR and data protection laws",
+          "Registered with regulatory authorities for complete transparency",
+          "Legal framework protects your business interests",
+          "Seamless integration with business practices and culture",
           "Local accountability and dispute resolution processes"
         ],
         examples: [
-          "GDPR-compliant data handling for all UK customer information",
-          "UK VAT registration for proper invoicing and tax compliance",
-          "Employment law compliance for any UK-based team members",
+          "GDPR-compliant data handling for all customer information",
+          "Tax registration for proper invoicing and compliance",
+          "Employment law compliance for team members",
           "Financial regulations adherence for payment processing"
         ],
         keyPoints: [
-          "Your business data stays within UK jurisdiction with proper legal protections",
+          "Your business data stays within jurisdiction with proper legal protections",
           "No complex international contract negotiations or legal complications",
-          "Direct accountability under UK law provides peace of mind for partnerships"
+          "Direct accountability under law provides peace of mind for partnerships"
         ]
       }
     },
     {
       icon: PoundSterling,
-      title: "Local GBP Pricing",
-      description: "No currency conversion fees, transparent pricing in British Pounds",
+      title: "Local Currency Pricing",
+      description: "No currency conversion fees, transparent pricing in local currency",
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-500",
       detailedInfo: {
-        overview: "All our services are priced transparently in British Pounds, eliminating the uncertainty and additional costs associated with currency conversion. This means predictable budgeting and no surprise charges on your invoices.",
+        overview: "All our services are priced transparently in local currency, eliminating the uncertainty and additional costs associated with currency conversion. This means predictable budgeting and no surprise charges on your invoices.",
         benefits: [
           "No hidden currency conversion fees or fluctuation charges",
           "Predictable monthly and project costs for better budgeting",
-          "UK bank account compatibility for seamless payments",
-          "VAT handling according to UK regulations",
-          "Local payment methods including direct debit and BACS"
+          "Local bank account compatibility for seamless payments",
+          "Tax handling according to local regulations",
+          "Local payment methods including direct debit and bank transfers"
         ],
         examples: [
-          "Monthly subscriptions billed directly in GBP without conversion",
-          "Project quotes provided in pounds with no exchange rate surprises",
-          "UK payment methods like direct debit and bank transfers accepted",
-          "Proper VAT invoicing for UK business tax purposes"
+          "Monthly subscriptions billed directly in local currency without conversion",
+          "Project quotes provided in local currency with no exchange rate surprises",
+          "Local payment methods like direct debit and bank transfers accepted",
+          "Proper tax invoicing for business tax purposes"
         ],
         keyPoints: [
           "Typical currency conversion fees can add 2-4% to overseas service costs",
@@ -99,13 +99,13 @@ export default function WhyChooseUs() {
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-500",
       detailedInfo: {
-        overview: "Our technology solutions are specifically designed to scale with UK startups and SMEs. We understand the unique challenges of growing businesses and provide flexible, cost-effective solutions that evolve with your needs without requiring complete overhauls.",
+        overview: "Our technology solutions are specifically designed to scale with startups and SMEs. We understand the unique challenges of growing businesses and provide flexible, cost-effective solutions that evolve with your needs without requiring complete overhauls.",
         benefits: [
           "Modular architecture allows adding features as you grow",
           "Cost-effective starter packages for early-stage businesses",
           "Seamless migration paths from basic to advanced features",
           "No vendor lock-in - own your data and code",
-          "UK SME-focused support and understanding of local market challenges"
+          "SME-focused support and understanding of local market challenges"
         ],
         examples: [
           "Start with a basic website, scale to e-commerce, then add enterprise features",
@@ -114,7 +114,7 @@ export default function WhyChooseUs() {
           "Prototype with basic tools, evolve to full production systems"
         ],
         keyPoints: [
-          "UK SMEs need solutions that don't require massive upfront investments",
+          "SMEs need solutions that don't require massive upfront investments",
           "Many providers focus on large enterprises, leaving smaller businesses underserved",
           "Our flexible approach means you only pay for what you need, when you need it"
         ]
@@ -127,24 +127,24 @@ export default function WhyChooseUs() {
       color: "from-amber-500 to-amber-600",
       bgColor: "bg-amber-500",
       detailedInfo: {
-        overview: "Our comprehensive 24/7 support ensures your business operations never stop. With UK-based support staff who understand local business hours and requirements, plus global coverage for urgent issues, you're never left without assistance.",
+        overview: "Our comprehensive 24/7 support ensures your business operations never stop. With local support staff who understand business hours and requirements, plus global coverage for urgent issues, you're never left without assistance.",
         benefits: [
-          "UK business hours coverage with local support staff",
-          "Emergency support available outside UK hours",
+          "Local business hours coverage with local support staff",
+          "Emergency support available outside business hours",
           "Multiple communication channels (phone, email, chat, ticket system)",
           "Proactive monitoring and issue prevention",
           "Knowledge base and self-service options for quick solutions"
         ],
         examples: [
-          "Critical system issues resolved within 1 hour during UK business hours",
+          "Critical system issues resolved within 1 hour during business hours",
           "Late-night deployment support for minimal business disruption",
           "Weekend emergency response for mission-critical applications",
           "Proactive monitoring alerts prevent issues before they impact users"
         ],
         keyPoints: [
-          "UK businesses can't afford extended downtime in today's competitive market",
-          "Local support staff understand UK business culture and communication styles",
-          "Global coverage ensures support even during UK holidays and weekends"
+          "Businesses can't afford extended downtime in today's competitive market",
+          "Local support staff understand business culture and communication styles",
+          "Global coverage ensures support even during holidays and weekends"
         ]
       }
     }
@@ -176,7 +176,7 @@ export default function WhyChooseUs() {
               Why Partner with Scalixity
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-900 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
-              UK-focused technology solutions designed for British businesses
+              Technology solutions tailored for global enterprises
             </p>
           </motion.div>
 
@@ -269,11 +269,11 @@ export default function WhyChooseUs() {
                 {/* Left Side - Content */}
                 <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
                   <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3 sm:mb-4 mt-4 sm:mt-0 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Built for the UK Market
+                    Built for the Global Market
                   </h3>
                   <p className="text-sm sm:text-base md:text-lg lg:text-xl text-black leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    We understand the unique challenges and opportunities facing UK businesses. Our solutions are tailored to meet local regulations, 
-                    business practices, and market demands, ensuring you get technology that works seamlessly in the British business environment.
+                    We understand the unique challenges and opportunities facing businesses. Our solutions are tailored to meet local regulations, 
+                    business practices, and market demands, ensuring you get technology that works seamlessly in your business environment.
                   </p>
                   
                   <div
@@ -283,7 +283,7 @@ export default function WhyChooseUs() {
                       onClick={() => openInfoModal(features[0])}
                       className="w-full sm:w-auto bg-[#9B7BB8] hover:bg-[#8A6AA7] text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold rounded-full transition-all duration-300 hover:shadow-lg"
                     >
-                      Start Your UK Journey
+                      Start Your Journey
                     </Button>
                     
                     <Button 
@@ -299,7 +299,7 @@ export default function WhyChooseUs() {
                 <div className="flex-1 flex justify-center lg:justify-end order-1 lg:order-2">
                   <img
                     src="/ukmarket.svg"
-                    alt="UK Market Technology Solutions"
+                    alt="Market Technology Solutions"
                     className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-auto"
                   />
                 </div>

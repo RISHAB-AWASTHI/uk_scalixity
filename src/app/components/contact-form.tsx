@@ -235,8 +235,7 @@ export default function ContactForm() {
                     Let&apos;s start a conversation
                   </h3>
                   <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-0 text-center sm:text-left" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Whether you&apos;re a startup looking to scale or an established business seeking digital transformation, 
-                    we&apos;re here to help. Our UK-based team provides local expertise with global reach.
+                  Whether you&apos;re a startup looking to scale or an established business seeking digital transformation, we&apos;re here to help. Our team combines local expertise with a global reach to deliver tailored technology solutions for every stage of growth
                   </p>
                 </div>
 
@@ -290,7 +289,7 @@ export default function ContactForm() {
                   <ul className="space-y-2 sm:space-y-2 text-sm sm:text-base text-gray-700" style={{ fontFamily: 'Poppins, serif' }}>
                     <li className="flex items-center gap-2 justify-center sm:justify-start">
                       <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4 flex-shrink-0" />
-                      <span className="text-center sm:text-left">UK-registered company with local expertise</span>
+                      <span className="text-center sm:text-left">International company with local expertise</span>
                     </li>
                     <li className="flex items-center gap-2 justify-center sm:justify-start">
                       <img src="/images/fi_4495290.svg" alt="arrow" className="w-4 h-4 flex-shrink-0" />
