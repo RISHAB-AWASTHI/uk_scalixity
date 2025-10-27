@@ -60,7 +60,7 @@ const WhatWeOffer: React.FC = () => {
         {/* Main Heading */}
         <div className="text-center mb-12">
           <h2
-            className="mb-1 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold mb-4"
+            className="mb-4 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold"
             style={{
               fontFamily: 'Playfair Display, serif',
               fontWeight: 600,

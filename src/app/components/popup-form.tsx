@@ -49,6 +49,9 @@ export default function PopupForm({ isOpen, onClose }: PopupFormProps) {
       console.log("Form submitted successfully:", result);
       setIsSuccess(true);
       
+      // Mark form as submitted in sessionStorage for PDF access
+      sessionStorage.setItem('formSubmitted', 'true');
+      
       // Reset form data
       setFormData({
         name: "",
