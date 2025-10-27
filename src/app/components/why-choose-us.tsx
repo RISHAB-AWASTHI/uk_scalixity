@@ -176,7 +176,7 @@ export default function WhyChooseUs() {
               Why Partner with Scalixity
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-900 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed px-2 sm:px-0" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Technology solutions tailored for global enterprises
+            UK-focused technology solutions designed for global businesses
             </p>
           </motion.div>
 

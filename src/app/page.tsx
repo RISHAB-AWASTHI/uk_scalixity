@@ -11,6 +11,7 @@ import ContactForm from "@/app/components/contact-form";
 import ScalixityCTA from "@/app/components/cta";
 import PopupWrapper from "@/app/components/popup-wrapper";
 import InfoModalWrapper from "@/app/components/info-modal-wrapper";
+import ResourcesComponent from "@/app/components/resources";
 import { Footer } from "@/app/components/footer";
 export default function ScalixityPage() {
 
@@ -34,7 +35,8 @@ export default function ScalixityPage() {
       {/* Why Choose Us Section */}
       <WhyChooseUs />
       
-      {/* Industries Section */}
+      {/* Resources Section */}
+      <ResourcesComponent />
     
       {/* Client Testimonials Section */}
       <ClientTestimonials />
