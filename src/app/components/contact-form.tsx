@@ -250,15 +250,18 @@ export default function ContactForm() {
                       <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
                         scalixity@gmail.com
                       </p>
+                      <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
+                      info@scalixity.com 
+                      </p>
                     </div>
-                    <div className="text-center sm:text-left">
+                    {/* <div className="text-center sm:text-left">
                       <h4 className="font-bold text-[#9486D9] mb-2 sm:mb-1 text-2xl sm:text-3xl" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
                         Call Us
                       </h4>
                       <p className="text-black text-sm sm:text-sm break-words" style={{ fontFamily: 'Montserrat, serif', fontWeight: 500 }}>
                         +44 (0) 20 1234 5678
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                   {/* Second Column: Address */}
                   <div className="text-center sm:text-left">

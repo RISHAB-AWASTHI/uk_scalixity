@@ -3,6 +3,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import ServiceDetailComponent from '@/app/components/service-detail';
+import PopupWrapper from '@/app/components/popup-wrapper';
 import { Service, ApiResponse } from '@/app/lib/types';
 
 const ServicePage: React.FC = () => {
@@ -81,7 +82,12 @@ const ServicePage: React.FC = () => {
     );
   }
 
-  return <ServiceDetailComponent service={service} />;
+  return (
+    <>
+      <ServiceDetailComponent service={service} />
+      <PopupWrapper />
+    </>
+  );
 };
 
 export default ServicePage;

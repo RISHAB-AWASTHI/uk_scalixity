@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { usePopup } from '@/app/hooks/use-popup';
 
 interface PricingPlan {
   priceRange: string;
@@ -37,6 +38,8 @@ interface ServiceDetailComponentProps {
 }
 
 const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service }) => {
+  const { openPopup } = usePopup();
+  
   React.useEffect(() => {
     // Debug: Inspect data coming from backend
     // Includes pricing and pricingPlans if present
@@ -73,7 +76,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
             className="text-center mb-12"
           >
             <h1
-              className="mb-1 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold mb-6"
+              className="mb-6 leading-tight text-black text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[50px] 2xl:text-[56px] font-bold"
               style={{
                 fontFamily: 'Playfair Display, serif',
                 fontWeight: 600,
@@ -351,8 +354,8 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                                   </li>
                                 ))}
                               </ul>
-                              <Link
-                                href="/#contact"
+                              <button
+                                onClick={openPopup}
                                 className={
                                   isProfessional
                                     ? 'block w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors'
@@ -360,7 +363,7 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
                                 }
                               >
                                 Get Started
-                              </Link>
+                              </button>
                             </div>
                           </div>
                         );
@@ -395,12 +398,12 @@ const ServiceDetailComponent: React.FC<ServiceDetailComponentProps> = ({ service
               Let's discuss your project and create a solution that drives your business forward.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
+              <button
+                onClick={openPopup}
                 className="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Start Your Project
-              </Link>
+              </button>
               <Link
                 href="/#what-we-offer"
                 className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors"
