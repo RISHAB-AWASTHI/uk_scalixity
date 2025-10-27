@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
 import { ServiceCarouselItem } from "@/app/lib/types";
+import { Button } from "@/app/components/ui/button";
 
 // Import Swiper styles
 import "swiper/css";
@@ -135,8 +136,8 @@ const WhatWeOffer: React.FC = () => {
             >
               {services.map((service) => (
                 <SwiperSlide key={service.id}>
-                  <Link href={`/services/${service.slug}`} className="block">
-                    <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-102 cursor-pointer">
+                  <div className="block">
+                    <div className="rounded-xl overflow-hidden transition-all duration-300 hover:scale-102 cursor-pointer relative">
                       <div className="aspect-[4/3] w-full relative">
                         <Image
                           src={service.image || fallbackImage}
@@ -148,9 +149,21 @@ const WhatWeOffer: React.FC = () => {
                           priority={services.length > 0 && service.id === services[0].id}
                           unoptimized={true}
                         />
+                        {/* CTA Button Overlay */}
+                        <div className="absolute inset-0 flex items-end justify-center pb-8 bg-black/10 rounded-xl transition-opacity duration-300 hover:bg-black/20">
+                          <Link href={`/services/${service.slug}`}>
+                            <Button 
+                              variant="default" 
+                              size="lg"
+                              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-6 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
+                            >
+                              Learn More
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
